@@ -5,17 +5,15 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "helloWorld", eager = true)
 public class ShowVersionBackingBean {
+	
+	private String jsfVersion;
 
 	public ShowVersionBackingBean() {
-		System.out.println("HelloWorld started!");
+		this.jsfVersion = FacesContext.class.getPackage().getImplementationVersion();
 	}
 
-	public String getMessage() {
-		return "Hello World!";
+	public String getJsfVersion() {
+		return jsfVersion;
 	}
 	
-	public String getVersion() {
-		return FacesContext.class.getPackage().getImplementationVersion();
-	}
-
 }
