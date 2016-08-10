@@ -9,8 +9,16 @@ public class ShowVersionBackingBean {
 	private String jsfVersion;
 
 	public ShowVersionBackingBean() {
-		this.jsfVersion = FacesContext.class.getPackage().getImplementationVersion();
-	}
+		Package pckg = FacesContext.class.getPackage();
+		
+		if (Package.getPackage("com.sun.faces") != null) {
+			pckg = Package.getPackage("com.sun.faces");
+		}
+		
+		this.jsfVersion =
+				pckg.getImplementationTitle() + "__" +
+				pckg.getImplementationVersion();
+		}
 
 	public String getJsfVersion() {
 		return jsfVersion;

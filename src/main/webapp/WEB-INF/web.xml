@@ -3,9 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name>hello-jsf-version</display-name>
-	<welcome-file-list>
-		<welcome-file>/faces/jsfVersion.xhtml</welcome-file>
-	</welcome-file-list>
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -15,12 +12,21 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.faces</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>/faces/*</url-pattern>
-	</servlet-mapping>
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.application.CONFIG_FILES</param-name>
+		<param-value>/WEB-INF/faces-config.xml</param-value>
+	</context-param> 
+	<welcome-file-list>
+		<welcome-file>jsfVersion.jsf</welcome-file>
+	</welcome-file-list>
+
+	<!--context-param>
+		<param-name>org.jboss.jbossfaces.JSF_CONFIG_NAME</param-name>
+		<param-value>myfaces-2.1.18</param-value>
+	</context-param-->
+
 </web-app>
